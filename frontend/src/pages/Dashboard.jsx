@@ -3,6 +3,7 @@ import { AuthContext } from '../context/AuthContext';
 import { getWeather, getWeatherByCoords } from '../services/weatherService';
 import { getHistory, saveSearch } from '../services/historyService';
 import { formatDate } from '../utils/formatDate';
+import { toast } from 'react-toastify';
 
 const Dashboard = () => {
   const { token, logout } = useContext(AuthContext);
@@ -12,16 +13,16 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(false);
 
   const buscar = async () => {
-    if (!city) return alert('Digite uma cidade!');
+    if (!city) return toast.error('Digite uma cidade!');
     setLoading(true);
     try {
       const data = await getWeather(city, token);
       setResult(data);
-      await saveSearch(city, data, token);
+      await saveSearch(data.name, data, token);
       setCity('');
       loadHistory();
     } catch (err) {
-      alert('Erro ao buscar clima');
+      toast.error('Erro ao buscar clima');
     } finally {
       setLoading(false);
     }
@@ -32,11 +33,11 @@ const Dashboard = () => {
     try {
       const data = await getWeather(cidade, token);
       setResult(data);
-      await saveSearch(cidade, data, token);
+      await saveSearch(data.name, data, token);
       setCity('');
       loadHistory();
     } catch (err) {
-      alert('Erro ao buscar clima');
+      toast.error('Erro ao buscar clima');
     } finally {
       setLoading(false);
     }
@@ -85,6 +86,7 @@ const Dashboard = () => {
           className="flex gap-4 mb-6"
         >
           <input
+            id="city"
             className="flex-1 px-4 py-2 border border-gray-300 rounded-md"
             placeholder="Digite uma cidade"
             value={city}

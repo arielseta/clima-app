@@ -109,6 +109,38 @@ npx vitest
 
 ---
 
+## 📫 Teste com Postman
+
+O projeto inclui o arquivo `clima-app.postman_collection.json`, com uma coleção completa de requisições para testar todas as funcionalidades da API, incluindo autenticação, previsão do tempo e histórico de buscas.
+
+### ▶️ Rotas disponíveis
+
+- **🔐 Autenticação**
+  - `POST /api/auth/register` – Registro
+  - `POST /api/auth/login` – Login
+  - `POST /api/auth/logout` – Logout
+
+- **☁️ Clima**
+  - `GET /api/weather?city=...` – Consulta por cidade
+  - `GET /api/weather/coords?lat=...&lon=...` – Consulta por coordenadas
+
+- **🕓 Histórico**
+  - `POST /api/history` – Salvar nova busca
+  - `GET /api/history` – Listar últimas buscas
+
+### ▶️ Como usar
+
+1. Abra o [Postman](https://www.postman.com/)
+2. Vá em **Importar > Arquivo** e selecione `clima-app.postman_collection.json`
+3. Já existe a variável de ambiente `baseUrl` com o valor: {{baseUrl}} = http://localhost:5000
+4. Após fazer login, copie o token JWT retornado e cole no campo **Authorization > Bearer Token** das requisições protegidas.
+
+### ✅ Dica
+
+Com a coleção importada e o token aplicado, você pode testar todas as rotas da aplicação de forma rápida e segura.
+
+---
+
 ## 📂 Estrutura de Pastas | Folder Structure
 
 ```
