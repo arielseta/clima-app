@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "33308ae9-f79d-43e4-bc9c-58be1ff31444",
+		"name": "clima-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31921047"
+	},
+	"item": [
+		{
+			"name": "Auth - Registro",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"teste@clima.com\",\n  \"password\": \"123456\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/auth/register",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth - Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"teste@clima.com\",\n  \"password\": \"123456\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/auth/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth - Logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/auth/logout",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Historico - Salvar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NTJjMzFiMTMzYWZjMjg0Y2Y1NWZmZCIsImlhdCI6MTc1MDI1NDQwNSwiZXhwIjoxNzUwMzQwODA1fQ.yne4G5ifO2DokbGpFelTWrwEUioAaN3ofoePmdSU-cY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"city\": \"São Paulo\",\n  \"weatherData\": {\n    \"temp\": 28,\n    \"humidity\": 60\n  }\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/history",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"history"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Historico - Pesquisar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NTJjMzFiMTMzYWZjMjg0Y2Y1NWZmZCIsImlhdCI6MTc1MDI1NDQwNSwiZXhwIjoxNzUwMzQwODA1fQ.yne4G5ifO2DokbGpFelTWrwEUioAaN3ofoePmdSU-cY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/history",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"history"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Weather - Pesquisar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NTJjMzFiMTMzYWZjMjg0Y2Y1NWZmZCIsImlhdCI6MTc1MDI1NDQwNSwiZXhwIjoxNzUwMzQwODA1fQ.yne4G5ifO2DokbGpFelTWrwEUioAaN3ofoePmdSU-cY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/weather?city=São Paulo",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "São Paulo"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Weather - Coordenadas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NTJjMzFiMTMzYWZjMjg0Y2Y1NWZmZCIsImlhdCI6MTc1MDI1NDQwNSwiZXhwIjoxNzUwMzQwODA1fQ.yne4G5ifO2DokbGpFelTWrwEUioAaN3ofoePmdSU-cY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/weather/coords?lat=-22.1577216&lon=-49.9777536",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"weather",
+						"coords"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "-22.1577216"
+						},
+						{
+							"key": "lon",
+							"value": "-49.9777536"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:5000",
+			"type": "string"
+		}
+	]
+}
