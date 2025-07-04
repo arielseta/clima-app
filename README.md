@@ -43,7 +43,7 @@ Clima App is a full stack weather forecast platform that allows registered users
 
 ### 1. Clonar o projeto | Clone the project
 ```bash
-git clone https://github.com/seuusuario/clima-app.git
+git clone https://github.com/arielseta/clima-app.git
 cd clima-app
 ```
 
